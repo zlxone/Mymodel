@@ -18,18 +18,13 @@ class Logo extends React.Component {
 }
 
 export default class App extends Component {
-  static navigationOptions = () => {
-    return {
-      headerTitle: <Logo />,
-      headerLeft: (
-        <Text>left</Text>
-      ),
-      headerRight: (
-        <Text>right</Text>
-      )
 
-    }
-  }
+  // static navigationOptions = () => {
+  //   return {
+  //     headerTitle: <Logo />,
+  //     title:'Mine123',
+  //   }
+  // }
 
 
   render() {
