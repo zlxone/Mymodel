@@ -1,17 +1,53 @@
 
-import React from 'react';
-import {Text, View} from 'react-native';
-import { createBottomTabNavigator } from 'react-navigation';
+import React, { Component } from 'react';
+import { Text, View, Modal } from 'react-native';
+import { createBottomTabNavigator, StackNavigator } from 'react-navigation';
 import Home from '../pages/Home'
 import Mine from '../pages/Mine'
 import Setting from '../pages/Setting'
 import Login from '../pages/Login'
 import Mytest from '../pages/mytest'
+import MineDetail from '../pages/MineDetail'
 
-
-export default createBottomTabNavigator({
+const Tab = createBottomTabNavigator({
+  Mine: Mine,
   Home: Home,
   Mytest: Mytest,
-  Mine:Mine,
 });
 
+const MainStack = StackNavigator(
+  {//定义路由
+    Tab:Tab,
+    Mine: Mine,
+    Login: Login,
+    Setting: Setting,
+  },
+  {//定义配置
+    initialRouteName: 'Tab',     //设置初始路由为Home
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: 'yellow'
+      },
+      headerTintColor: "black",
+      headerTitleStyle: {
+        fontWeight: 'bold'
+      }
+    }
+  }
+);
+
+const RootStack = StackNavigator({
+  Main: MainStack,
+  MineDetail: MineDetail,
+}, {
+  mode: 'modal',
+  headerMode: 'none',
+}
+)
+
+
+export default class App extends Component {
+  render() {                            //将Navigation作为根路径导出
+    return <RootStack />;
+  }
+}
