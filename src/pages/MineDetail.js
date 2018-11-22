@@ -5,7 +5,7 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 
 
 export default class App extends Component {
-    
+
     render() {
         const data = this.props.navigation.state.params;
 
@@ -29,3 +29,5 @@ const styles = StyleSheet.create({
     },
 
 });
+
+

@@ -21,7 +21,7 @@ export default class ControlPanel extends Component {
           }}
           title="Close Drawer"
         />
-        <Text>大江东去浪淘尽</Text>
+        <Text style={styles.controlPanelWelcome}>大江东去浪淘尽</Text>
       </View>
     )
   }

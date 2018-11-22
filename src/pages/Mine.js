@@ -49,8 +49,7 @@ export default class App extends Component {
     return (
       <Drawer
         ref={c => this.drawer = c}
-        type='overlay'
-        // animation={this.state.animation}
+        type={this.state.drawerType}
         openDrawerOffset={this.state.openDrawerOffset}
         closedDrawerOffset={this.state.closedDrawerOffset}
         panOpenMask={this.state.panOpenMask}
@@ -58,14 +57,14 @@ export default class App extends Component {
         relativeDrag={this.state.relativeDrag}
         panThreshold={this.state.panThreshold}
         content={controlPanel}
-        disabled={this.state.disabled}
-        tweenDuration={this.state.tweenDuration}
-        tweenEasing={this.state.tweenEasing}
-        acceptDoubleTap={this.state.acceptDoubleTap}
-        acceptTap={this.state.acceptTap}
-        acceptPan={this.state.acceptPan}
-        tapToClose={this.state.tapToClose}
-        negotiatePan={this.state.negotiatePan}
+        // disabled={this.state.disabled}
+        // tweenDuration={this.state.tweenDuration}
+        // tweenEasing={this.state.tweenEasing}
+        // acceptDoubleTap={this.state.acceptDoubleTap}
+        // acceptTap={this.state.acceptTap}
+        // acceptPan={this.state.acceptPan}
+        // tapToClose={this.state.tapToClose}
+        // negotiatePan={this.state.negotiatePan}
         side="left"
       >
       
