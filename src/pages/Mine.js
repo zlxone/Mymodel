@@ -1,6 +1,9 @@
-
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import Drawer from 'react-native-drawer';
+import DrawerPanel from './DrawerPanel';
+
+
 var Dimensions = require('Dimensions');
 var { width } = Dimensions.get('window');
 
@@ -9,28 +12,69 @@ class Logo extends React.Component {
   render() {
     return (
       <Text>Mine</Text>
-      // <Image
-      //     source={require('../images/test.png')}
-      //     style={{ width: 50, height: 50 }}
-      //     ></Image>
     )
   }
 }
 
 export default class App extends Component {
-
-  // static navigationOptions = () => {
-  //   return {
-  //     headerTitle: <Logo />,
-  //     title:'Mine123',
-  //   }
-  // }
-
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      drawerType: 'overlay',
+      openDrawerOffset: 100,
+      closedDrawerOffset: 0,
+      panOpenMask: .1,
+      panCloseMask: .9,
+      relativeDrag: false,
+      panThreshold: .25,
+      tweenHandlerOn: false,
+      tweenDuration: 350,
+      tweenEasing: 'linear',
+      disabled: false,
+      tweenHandlerPreset: null,
+      acceptDoubleTap: false,
+      acceptTap: false,
+      acceptPan: true,
+      tapToClose: false,
+      negotiatePan: false,
+      side: "left",
+    };
+  }
 
   render() {
+    var controlPanel = <DrawerPanel closeDrawer={() => {
+      this.drawer.close();
+    }} />
+
     return (
+      <Drawer
+        ref={c => this.drawer = c}
+        type='overlay'
+        // animation={this.state.animation}
+        openDrawerOffset={this.state.openDrawerOffset}
+        closedDrawerOffset={this.state.closedDrawerOffset}
+        panOpenMask={this.state.panOpenMask}
+        panCloseMask={this.state.panCloseMask}
+        relativeDrag={this.state.relativeDrag}
+        panThreshold={this.state.panThreshold}
+        content={controlPanel}
+        disabled={this.state.disabled}
+        tweenDuration={this.state.tweenDuration}
+        tweenEasing={this.state.tweenEasing}
+        acceptDoubleTap={this.state.acceptDoubleTap}
+        acceptTap={this.state.acceptTap}
+        acceptPan={this.state.acceptPan}
+        tapToClose={this.state.tapToClose}
+        negotiatePan={this.state.negotiatePan}
+        side="left"
+      >
+      
+
+
       <View style={styles.container}>
-        <Text>Mine</Text>
+        <TouchableOpacity onPress={() => this.drawer.open()}>
+          <Text>Mine_drawer</Text>
+        </TouchableOpacity>
         <View style={styles.content}>
           <Image
             style={{ resizeMode: 'contain', width: 200, height: 200 }}
@@ -49,6 +93,7 @@ export default class App extends Component {
 
         </View>
       </View>
+      </Drawer>
     );
   }
 }
@@ -61,7 +106,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   content: {
-    marginTop: 10,
+    marginTop: 60,
     width: width,
     height: 100,
     justifyContent: 'center',

@@ -8,7 +8,6 @@ import Setting from '../pages/Setting'
 import Login from '../pages/Login'
 import Mytest from '../pages/mytest'
 import MineDetail from '../pages/MineDetail'
-import Drawer from '../pages/Drawer'
 
 
 const Tab = createBottomTabNavigator({
@@ -23,7 +22,6 @@ const MainStack = StackNavigator(
     Mine: Mine,
     Login: Login,
     Setting: Setting,
-    Drawer:Drawer,
   },
   {//定义配置
     initialRouteName: 'Tab',     //设置初始路由为Home
